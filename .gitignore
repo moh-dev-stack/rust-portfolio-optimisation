@@ -1,0 +1,19 @@
+# Rust build output
+/target/
+
+# Python virtual environment
+venv/
+
+# Data files (if you don't want to version raw data)
+/data/
+/data/
+
+# Cargo artifacts
+**/*.rs.bk
+
+# OS & editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

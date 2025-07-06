@@ -1,0 +1,8 @@
+[package]
+name = "pyfetcher"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+nalgebra = "0.32"

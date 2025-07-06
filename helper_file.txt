@@ -1,0 +1,91 @@
+this is to help with command lines
+
+GC=F   # Gold
+CL=F   # Crude Oil
+NG=F   # Natural Gas
+SI=F   # Silver
+ZC=F   # Corn
+ZW=F   # Wheat
+
+
+cargo run -- \
+  --tickers GC=F CL=F NG=F SI=F ZC=F ZW=F \
+  --start 2015-01-01 \
+  --interval 1d \
+  --out data/commodities.csv
+
+
+---------------------------
+
+^GSPC   # S&P 500
+^IXIC   # NASDAQ Composite
+^DJI    # Dow Jones Industrial Average
+^FTSE   # FTSE 100
+^GDAXI  # DAX (Germany)
+^N225   # Nikkei 225 (Japan)
+^HSI    # Hang Seng (Hong Kong)
+
+
+cargo run --bin fetcher -- \
+  --tickers ^GSPC ^IXIC ^DJI ^FTSE ^GDAXI ^N225 ^HSI \
+  --start 2015-01-01 \
+  --interval 1d \
+  --out data/indices.csv
+
+
+---------------------------
+
+XOM    # Exxon Mobil
+CVX    # Chevron
+BP     # BP Plc
+COP    # ConocoPhillips
+SHEL   # Shell Plc
+EOG    # EOG Resources
+
+
+cargo run --bin fetcher -- \
+  --tickers XOM CVX BP COP SHEL EOG \
+  --start 2015-01-01 \
+  --interval 1d \
+  --out data/energy.csv
+
+---------------------------
+
+SPY    # S&P 500 ETF
+AAPL   # Apple (mega-cap tech)
+MSFT   # Microsoft (mega-cap tech)
+EEM    # MSCI Emerging Mkts
+VNQ    # US Real Estate (REIT ETF)
+TLT    # 20+ Year Treasuries
+GLD    # Gold ETF
+
+
+cargo run --bin fetcher -- \
+  --tickers ^GSPC ^IXIC ^DJI ^FTSE ^GDAXI ^N225 ^HSI \
+  --start 2015-01-01 \
+  --interval 1d \
+  --out data/indices.csv
+
+
+--------
+
+
+SPY    # S&P 500 ETF
+AAPL   # Apple (mega-cap tech)
+MSFT   # Microsoft (mega-cap tech)
+EEM    # MSCI Emerging Mkts
+VNQ    # US Real Estate (REIT ETF)
+TLT    # 20+ Year Treasuries
+GLD    # Gold ETF
+
+
+cargo run --bin fetcher -- \
+  --tickers SPY AAPL MSFT EEM VNQ TLT GLD \
+  --start 2015-01-01 \
+  --interval 1d \
+  --out data/rich_portfolio.csv
+
+cargo run --bin load_prices -- data/rich_portfolio.csv
+
+
+cargo run   --bin sharpe_opt_long -- data/rich_portfolio.csv --risk-free 0.02
